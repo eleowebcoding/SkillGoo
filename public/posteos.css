@@ -1,0 +1,286 @@
+/* Estilo general para las publicaciones */
+.post {
+    width: 100%;
+    /* Abarca todo el espacio disponible */
+    max-width: 1200px;
+    /* O un valor fijo si deseas limitar el ancho */
+    margin: 0 auto;
+    /* Centra el post horizontalmente */
+    background: linear-gradient(135deg, #1e1e2f, #3d3d5c);
+    border: 1px solid #4b5a6500;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #5f6b76;
+    position: relative;
+}
+
+.profile-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-image:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+.post-header-info {
+    flex-grow: 1;
+}
+
+.post-username {
+    font-size: 18px;
+    margin-right: 12px;
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.post-timestamp {
+    font-size: 14px;
+    color: #b0b0b0;
+    font-style: italic;
+}
+
+/* Estilo para los botones de eliminar y modificar */
+.post-actions {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    display: flex;
+    gap: 10px;
+    z-index: 1;
+}
+
+/* Estilo para el botón de eliminar */
+.bin-button,
+.edit-button {
+    color: #fff;
+    border-radius: 50%;
+    padding: 12px;
+    /* Asegura que ambos botones tengan el mismo tamaño */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bin-button i,
+.edit-button i {
+    font-size: 1.25rem;
+    /* Asegura que el tamaño del ícono sea consistente */
+    transition: transform 0.3s ease;
+}
+
+/* Estilo para el botón de eliminar */
+.bin-button {
+    background-color: #e74c3c;
+}
+
+.bin-button:hover {
+    background-color: #c0392b;
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+
+/* Estilo para el botón de modificar */
+.edit-button {
+    background-color: #3498db;
+}
+
+.edit-button:hover {
+    background-color: #2980b9;
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+
+.bin-button:focus,
+.edit-button:focus {
+    outline: none;
+}
+
+/* Para asegurar que los botones sean circulares con el mismo tamaño */
+.bin-button,
+.edit-button {
+    width: 40px;
+    /* Definir el ancho */
+    height: 40px;
+    /* Definir la altura */
+}
+
+/* Estilo para el contenido de la publicación */
+.post-content {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-top: 20px;
+    color: #dcdcdc;
+    word-wrap: break-word;
+}
+
+.img-fluid {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin-top: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Pie de la publicación */
+.post-footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* Estilo de los botones del pie de la publicación */
+.post-footer button {
+    color: #bbb;
+    font-size: 15px;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: none;
+    /* Elimina el fondo del botón */
+    border: none;
+    /* Elimina cualquier borde */
+    outline: none;
+    /* Elimina el contorno */
+    padding: 0;
+    /* Elimina cualquier padding extra */
+    text-decoration: none;
+    /* Quita el subrayado por defecto */
+}
+
+/* Elimina el borde o la línea de foco o hover */
+.post-footer button:focus,
+.post-footer button:active {
+    outline: none;
+    /* Elimina el contorno al hacer foco */
+    border: none;
+    /* Asegura que no haya borde al hacer foco */
+}
+
+/* Íconos de los botones */
+.post-footer button i {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    /* Espacio entre el ícono y el texto */
+}
+
+.post-footer button:hover {
+    transform: scale(1.05);
+    text-decoration: none;
+    /* Asegura que no haya subrayado o línea al hacer hover */
+}
+
+/* Cambiar color del texto al hacer hover sobre los botones */
+.like-button:hover span {
+    color: #c0392b;
+    /* Color igual que el del ícono */
+}
+
+.comment-button:hover span {
+    color: #2ecc71;
+    /* Color igual que el del ícono */
+}
+
+.share-button:hover span {
+    color: #d5d812;
+    /* Color igual que el del ícono */
+}
+
+@media (max-width: 768px) {
+    /* Ajustes generales para la publicación */
+    .post {
+        width: 100%; /* Asegura que ocupe todo el ancho del contenedor */
+        max-width: none; /* Elimina la restricción de ancho */
+        margin: 0 auto; /* Centra horizontalmente */
+        border-radius: 0; /* Opcional: elimina las esquinas redondeadas para mayor consistencia */
+        padding: 15px; /* Reduce el padding interno para pantallas pequeñas */
+    }
+
+    /* Encabezado de la publicación */
+    .post-header {
+        flex-direction: column; /* Apila la imagen y el texto */
+        align-items: center; /* Centra los elementos */
+        text-align: center; /* Centra el texto */
+    }
+
+    .profile-image {
+        width: 50px; /* Ajusta el tamaño de la imagen de perfil */
+        height: 50px;
+        margin-right: 0; /* Elimina el margen derecho */
+        margin-bottom: 10px; /* Añade espacio debajo de la imagen */
+    }
+
+    .post-username {
+        font-size: 16px; /* Reduce el tamaño del texto */
+    }
+
+    .post-timestamp {
+        font-size: 12px; /* Reduce el tamaño del texto */
+    }
+
+    /* Acciones de la publicación (botones de editar y eliminar) */
+    .post-actions {
+        position: static; /* Cambia a posición estática para evitar desplazamiento incorrecto */
+        margin-top: 10px;
+        width: 100%; /* Asegura que los botones ocupen todo el ancho disponible */
+        display: flex; /* Alinea los botones en fila */
+        justify-content: center; /* Centra los botones */
+        gap: 15px; /* Espacio entre botones */
+    }
+
+    .bin-button,
+    .edit-button {
+        width: 40px; /* Ajusta el tamaño de los botones */
+        height: 40px;
+        padding: 8px; /* Reduce el padding */
+    }
+
+    /* Contenido de la publicación */
+    .post-content {
+        font-size: 14px; /* Ajusta el tamaño del texto */
+        line-height: 1.6; /* Reduce el espacio entre líneas */
+    }
+
+    /* Imagen dentro de la publicación */
+    .img-fluid {
+        max-width: 100%; /* Asegura que la imagen no exceda el contenedor */
+        height: auto; /* Mantiene la proporción de la imagen */
+        border-radius: 8px; /* Reduce las esquinas redondeadas */
+    }
+
+    /* Pie de la publicación */
+    .post-footer {
+        flex-direction: row; /* Mantén los botones en fila */
+        justify-content: center; /* Centra los botones */
+        gap: 15px; /* Añade espacio entre botones */
+        margin-top: 15px;
+    }
+
+    .post-footer button {
+        font-size: 14px; /* Reduce el tamaño del texto */
+    }
+
+    .post-footer button i {
+        font-size: 1.4rem; /* Ajusta el tamaño del ícono */
+    }
+}

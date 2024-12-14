@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="icon" href="/public/img/favicon.ico" type="image/x-icon">
+    <style>
+        /* Fondo animado de estrellas */
+        .star-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1e1e2f, #3d3d5c);
+            overflow: hidden;
+            z-index: -1; /* Coloca el fondo detrás del contenido */
+        }
+
+        .star {
+            position: absolute;
+            background: rgb(255, 255, 255);
+            width: 2px;
+            height: 2px;
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: twinkle 3s infinite;
+        }
+
+        /* Animación para dar efecto de parpadeo */
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            30% { opacity: 1; transform: scale(1.5); }
+        }
+
+        /* Estilos generales */
+        body {
+            background: linear-gradient(135deg, #1e1e2f, #3d3d5c);
+            font-family: 'Roboto', sans-serif;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        /* Contenedor principal */
+        .form_container {
+            width: 100%;
+            max-width: 400px;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            color: #ffffff;
+            position: relative;
+            z-index: 1; /* Asegura que el contenido esté delante del fondo */
+        }
+
+        /* Logo o título con animación de desvanecimiento */
+        .title_container {
+            margin-bottom: 25px;
+        }
+
+        .title {
+            font-size: 2em;
+            color: #ffffff;
+            margin-bottom: 25px;
+            transition: opacity 1s ease, font-family 0.5s ease;
+            opacity: 1;
+        }
+
+        /* Campos de formulario */
+        .input_container {
+            margin-bottom: 1.25rem;
+            text-align: left;
+        }
+
+        .input_label {
+            display: block;
+            font-weight: 600;
+            color: #ffffff;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .input_field {
+            width: 94%;
+            padding: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            font-size: 1rem;
+            color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .input_field::placeholder {
+            color: #ffffff;
+        }
+
+        .input_field:focus {
+            background-color: rgba(255, 254, 254, 0.062);
+            color: #ffffff;
+            border-color: #1877f2;
+            box-shadow: none;
+        }
+
+        /* Botón de envío con estilo degradado */
+        .sign-in_btn {
+            background: linear-gradient(45deg, #ff0051, #5314db, #6000d6);
+            color: #ffffff;
+            font-weight: bold;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            margin-top: 15px;
+            transition: transform 0.2s ease, filter 0.2s ease;
+        }
+
+        .sign-in_btn:hover {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        /* Estilos para el área de carga personalizada */
+        .custom-file-upload {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            padding: 1rem;
+            border: 2px dashed #ffffff;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .custom-file-upload:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+            border-color: #ff0051;
+        }
+
+        .custom-file-upload .icon svg {
+            height: 60px;
+            fill: #ffffff;
+        }
+
+        .custom-file-upload .text span {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        /* Ocultar el input de archivo */
+        input[type="file"] {
+            display: none;
+        }
+
+        /* Texto de ayuda */
+        .help-text {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #E8E8E8;
+        }
+
+        .help-text a {
+            color: #0095f6;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .help-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsividad */
+        @media (max-width: 600px) {
+            .form_container {
+                width: 90%;
+                padding: 20px;
+            }
+
+            .title {
+                font-size: 1.5em;
+            }
+
+            .input_field {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fondo animado de estrellas -->
+    <div class="star-bg">
+        <!-- Estrellas generadas por JS -->
+    </div>
+
+    <div class="form_container">
+        <div class="title_container">
+            <p class="title">Crear cuenta</p>
+            <span class="subtitle">Regístrate y únete a nuestra comunidad</span>
+        </div>
+        <form action="/register" method="POST" enctype="multipart/form-data">
+            <div class="input_container">
+                <label class="input_label" for="username">Usuario:</label>
+                <input placeholder="Usuario" id="username" name="username" type="text" class="input_field" required>
+            </div>
+            <div class="input_container">
+                <label class="input_label" for="password">Contraseña:</label>
+                <div style="position: relative;">
+                    <input placeholder="Contraseña" id="password" name="password" type="password" class="input_field" required>
+                    <span onclick="togglePassword()" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #fff;"></span>
+                </div>
+                <p id="password-message" style="color: #ff0033; font-size: 0.9rem;"></p>
+            </div>
+
+            <!-- Nuevo campo de biografía -->
+            <div class="input_container">
+                <label class="input_label" for="bio">Biografía:</label>
+                <textarea placeholder="Escribe algo sobre ti..." id="bio" name="bio" class="input_field" rows="4"></textarea>
+            </div>
+
+            <!-- Nuevo campo de habilidades -->
+            <div class="input_container">
+                <label class="input_label" for="skills">Habilidades:</label>
+                <input placeholder="Ej. Programación, Diseño" id="skills" name="skills" type="text" class="input_field">
+            </div>
+
+            <!-- Nuevo campo de intereses -->
+            <div class="input_container">
+                <label class="input_label" for="interests">Intereses:</label>
+                <input placeholder="Ej. Música, Viajes, Fotografía" id="interests" name="interests" type="text" class="input_field">
+            </div>
+
+            <!-- Campo de foto de perfil -->
+            <div class="input_container">
+                <label class="input_label" for="profilePicture">Foto de Perfil:</label>
+                <label class="custom-file-upload" for="profilePicture">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M10 1C9.73478 1 9.48043 1.10536 9.29289 1.29289L3.29289 7.29289C3.10536 7.48043 3 7.73478 3 8V20C3 21.6569 4.34315 23 6 23H7C7.55228 23 8 22.5523 8 22V14H16V22C16 22.5523 16.4477 23 17 23H18C19.6569 23 21 21.6569 21 20V8C21 7.73478 20.8946 7.48043 20.7071 7.29289L14.7071 1.29289C14.5196 1.10536 14.2652 1 14 1H10ZM8 14V22H16V14H8Z"/>
+                        </svg>
+                    </div>
+                    <div class="text">
+                        <span>Haz clic para subir una foto</span>
+                    </div>
+                </label>
+                <input type="file" name="profilePicture" id="profilePicture">
+            </div>
+
+            <!-- Botón de registro -->
+            <button type="submit" class="sign-in_btn">Registrar cuenta</button>
+        </form>
+
+        <div class="help-text">
+            <p>¿Ya tienes cuenta? <a href="index.html">Inicia sesión</a></p>
+        </div>
+    </div>
+
+    <script>
+    // Generar estrellas aleatorias en el fondo
+        for (let i = 0; i < 100; i++) {
+            let star = document.createElement("div");
+            star.className = "star";
+            star.style.top = Math.random() * 100 + "%";
+            star.style.left = Math.random() * 100 + "%";
+            star.style.animationDuration = Math.random() * 3 + 2 + "s"; // Duración aleatoria de parpadeo
+            document.querySelector(".star-bg").appendChild(star);
+        }
+    </script>
+</body>
+</html>

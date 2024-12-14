@@ -1,0 +1,233 @@
+/* Modal de Crear Nueva Publicación */
+#newPostModal .modal-content {
+    background: #ffffff00;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    border: none;
+}
+
+#newPostModal .modal-header {
+    border-bottom: none;
+    display: flex;
+    align-items: center;
+    padding-bottom: 0;
+    background: linear-gradient(135deg, #f06b88, #e6a7d4, #d2a1f4);
+    /* Degradado estilo Instagram */
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 10px 10px 0 0;
+}
+
+#newPostModal .modal-title {
+    font-weight: bold;
+    font-size: 1.4em;
+    margin-right: auto;
+}
+
+#newPostModal .close {
+    color: #fff;
+    opacity: 0.7;
+}
+
+#newPostModal .close:hover {
+    opacity: 1;
+}
+
+/* Campos de texto y área de descripción */
+#new-post-form .form-control,
+#new-post-form textarea {
+    background-color: #fafafa;
+    border: 1px solid #dbdbdb;
+    border-radius: 8px;
+    padding: 12px 15px;
+    font-size: 1em;
+    color: #333;
+    margin-top: 15px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+#new-post-form .form-control:focus,
+#new-post-form textarea:focus {
+    border-color: #f06b88;
+    /* Color suave de enfoque similar a Instagram */
+    outline: none;
+    box-shadow: inset 0 0 5px rgba(255, 88, 122, 0.4);
+}
+
+/* Etiqueta y botón para subir imagen */
+#newPostModal .post-image-label {
+    display: flex;
+    align-items: center;
+    background-color: #fafafa;
+    border: 1px solid #dbdbdb;
+    border-radius: 8px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1em;
+    color: #333;
+    margin-top: 15px;
+    transition: background-color 0.3s;
+}
+
+#newPostModal .post-image-label:hover {
+    background-color: #f06b88;
+    /* Cambio de color al pasar el mouse */
+    color: #fff;
+    border-color: #f06b88;
+}
+
+#newPostModal #post-image {
+    display: none;
+}
+
+/* Botón Publicar */
+#new-post-form .btn-primary {
+    background: linear-gradient(135deg, #f06b88, #e6a7d4, #d2a1f4);
+    /* Degradado estilo Instagram */
+    border: none;
+    font-weight: bold;
+    padding: 12px 25px;
+    border-radius: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+    color: #fff;
+}
+
+#new-post-form .btn-primary:hover {
+    background: linear-gradient(135deg, #f2a7d6, #d59bdb, #c79df4);
+    /* Efecto hover para el degradado */
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Ajustes para dispositivos pequeños */
+@media (max-width: 576px) {
+    #newPostModal .modal-content {
+        padding: 15px;
+    }
+
+    #newPostModal .modal-title {
+        font-size: 1.2em;
+    }
+
+    #new-post-form .btn-primary {
+        padding: 10px 20px;
+    }
+
+    #newPostModal .post-image-label {
+        font-size: 0.8em;
+    }
+}
+
+
+
+
+
+/* Overlay del loader */
+.loader-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    z-index: 10;
+}
+
+/* Spinner circular */
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(240, 107, 136, 0.2);
+    /* Color degradado suave */
+    border-top-color: #f06b88;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+
+
+
+/* Botón de eliminar como cubo */
+.bin-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 5px; /* Elimina el borde redondeado, ahora tiene bordes cuadrados */
+    background-color: rgba(255, 95, 95, 0);
+    cursor: pointer;
+    border: 2px solid rgba(255, 201, 201, 0);
+    transition-duration: 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.bin-bottom {
+    width: 15px;
+    z-index: 2;
+}
+
+.bin-top {
+    width: 17px;
+    transform-origin: right;
+    transition-duration: 0.3s;
+    z-index: 2;
+}
+
+.bin-button:hover .bin-top {
+    transform: rotate(45deg);
+}
+
+.bin-button:hover {
+    background-color: rgb(255, 0, 0);
+}
+
+.bin-button:active {
+    transform: scale(0.9);
+}
+
+.garbage {
+    position: absolute;
+    width: 14px;
+    height: auto;
+    z-index: 1;
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.bin-button:hover .garbage {
+    animation: throw 0.4s linear;
+}
+
+@keyframes throw {
+    from {
+        transform: translate(-400%, -700%);
+        opacity: 0;
+    }
+    to {
+        transform: translate(0%, 0%);
+        opacity: 1;
+    }
+}

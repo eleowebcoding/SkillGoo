@@ -1,0 +1,165 @@
+/* Contenedor general de la tarjeta de usuarios */
+.user-card-container {
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    color: #ddd;
+    margin: 0 20px;
+}
+
+/* Título dentro de la tarjeta de usuarios */
+.user-card-container h4 {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    color: #ffffff;
+    border-bottom: 3px solid #4a4a7d;
+    padding-bottom: 10px;
+    font-weight: bold;
+}
+
+/* Diseño principal de la tarjeta de usuario */
+.user-card {
+    background: linear-gradient(135deg, #23233a, #3f3f69);
+    margin-bottom: 20px;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;  /* Cambiar a columna */
+    align-items: center; /* Centrado de todos los elementos */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    color: #ddd;
+    
+}
+
+/* Efecto hover de la tarjeta */
+.user-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Encabezado de la tarjeta de usuario */
+.user-card .user-header {
+    display: flex;
+    flex-direction: column; /* Para centrar la imagen y el nombre */
+    align-items: center;
+    margin-bottom: 15px; /* Espaciado entre la imagen y los botones */
+}
+
+/* Imagen de perfil dentro de la tarjeta */
+.user-card .profile-image {
+    width: 90px;  /* Imagen más grande */
+    height: 90px; /* Imagen más grande */
+    object-fit: cover;
+    margin-bottom: 15px;  /* Separación entre la imagen y el nombre */
+    border-radius: 50%;
+    border: 4px solid #6c6c9a;  /* Borde más destacado */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Sombra más profunda */
+    transition: transform 0.4s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Centrado de la imagen */
+.user-card .profile-image {
+    margin: 0 auto; /* Centrado de la imagen */
+}
+
+/* Efecto de hover en la imagen de perfil */
+.user-card .profile-image:hover {
+    border-color: #4a90e2;  /* Borde azul en hover */
+    transform: scale(1.1); /* Efecto de zoom */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Sombra más prominente */
+}
+
+/* Estilo del nombre de usuario */
+.user-card .username {
+    font-size: 1.4rem;  /* Aumentar tamaño del nombre */
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 12px;  /* Separación entre nombre y botones */
+}
+
+/* Pie de tarjeta con botones */
+.user-card .user-footer {
+    display: flex;
+    justify-content: center; /* Centrado de los botones */
+    width: 100%;
+    gap: 20px;  /* Espaciado más amplio entre los botones */
+}
+
+/* Botón de mensaje (verde) */
+.user-card .message-button {
+    background-color: transparent;
+    border: 2px solid #28a745;  /* Borde verde */
+    padding: 12px 25px; /* Tamaño del botón más grande */
+    color: #28a745;  /* Texto verde */
+    font-size: 1.2rem;  /* Aumentar tamaño de texto */
+    border-radius: 30px;  /* Bordes más redondeados */
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto hover en el botón de mensaje */
+.user-card .message-button:hover {
+    background-color: #28a745;
+    color: #fff;
+    transform: scale(1.05);  /* Efecto de zoom más suave */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Sombra sutil en hover */
+}
+
+/* Botón de ver perfil (morado azulado) */
+.user-card .view-profile-button {
+    background-color: transparent;
+    border: 2px solid #7f53ac;  /* Borde morado azulado */
+    padding: 12px 25px; /* Tamaño del botón más grande */
+    color: #7f53ac;  /* Texto morado azulado */
+    font-size: 1.2rem;  /* Aumentar tamaño de texto */
+    border-radius: 30px;  /* Bordes más redondeados */
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto hover en el botón de ver perfil */
+.user-card .view-profile-button:hover {
+    background-color: #7f53ac;
+    color: #fff;
+    transform: scale(1.05);  /* Efecto de zoom más suave */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Sombra sutil en hover */
+}
+
+/* Íconos dentro de los botones */
+.user-card .message-button i,
+.user-card .view-profile-button i {
+    margin-right: 8px; /* Ajuste del espacio entre el icono y el texto */
+    font-size: 1.3rem;
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 767px) {
+    .user-card-container {
+        display: none;
+        padding: 10px;
+    }
+
+    /* Diseño de tarjeta adaptable en móviles */
+    .user-card {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+    }
+
+    /* Ajustes de imagen de perfil en móviles */
+    .user-card .profile-image {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 10px;
+    }
+
+    /* Ajustes en la lista de usuarios para mayor separación */
+    #home-users {
+        gap: 20px;
+    }
+}

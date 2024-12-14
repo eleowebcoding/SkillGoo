@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarjetas de Usuarios</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .user-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            padding: 20px;
+        }
+
+        .user-card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+            width: 150px; /* Ajusta según tu diseño */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-picture {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .online {
+            color: green;
+            font-weight: bold;
+        }
+
+        .offline {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body data-theme="light">
+    <div class="theme-switch">
+        <input type="checkbox" id="theme-checkbox" />
+        <label for="theme-checkbox">
+            <div></div>
+            <span>Alternar Tema</span>
+        </label>
+    </div>
+
+    <div id="user-cards" class="user-cards">
+        <!-- Las tarjetas de usuarios se agregarán dinámicamente aquí -->
+    </div>
+
+    <div class="bottom-menu">
+        <button class="menu-item">
+            <i class="fas fa-home icon-home"></i>
+            <span>Inicio</span>
+        </button>
+        <button class="menu-item">
+            <i class="fas fa-user-circle icon-profile"></i>
+            <span>Perfil</span>
+        </button>
+        <button class="menu-item">
+            <i class="fas fa-comments icon-messages"></i>
+            <span>Mensajes</span>
+        </button>
+        <button class="menu-item">
+            <i class="fas fa-cog icon-settings"></i>
+            <span>Configuración</span>
+        </button>
+    </div>
+
+    <script>
+        // Función para cargar los usuarios
+        async function loadUsers() {
+            try {
+                const response = await fetch('/users');
+                if (!response.ok) {
+                    throw new Error('Error al obtener los usuarios');
+                }
+                const users = await response.json();
+                displayUsers(users);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        // Función para mostrar los usuarios en tarjetas
+        function displayUsers(users) {
+            const userCardsContainer = document.getElementById('user-cards');
+            userCardsContainer.innerHTML = ''; // Limpiar contenido previo
+
+            users.forEach(user => {
+                const card = document.createElement('div');
+                card.className = 'user-card';
+                card.innerHTML = `
+                    <img src="${user.profilePicture}" alt="${user.username}" class="profile-picture">
+                    <h3>${user.username}</h3>
+                    <p class="${user.online ? 'online' : 'offline'}">${user.online ? 'En línea' : 'Fuera de línea'}</p>
+                `;
+                userCardsContainer.appendChild(card);
+            });
+        }
+
+        // Cargar los usuarios cuando se carga la página
+        window.onload = loadUsers;
+
+        // Cambiar tema
+        const checkbox = document.getElementById('theme-checkbox');
+        const body = document.body;
+
+        checkbox.addEventListener('change', () => {
+            if (checkbox.checked) {
+                body.setAttribute('data-theme', 'dark');
+            } else {
+                body.setAttribute('data-theme', 'light');
+            }
+        });
+    </script>
+</body>
+
+</html>
